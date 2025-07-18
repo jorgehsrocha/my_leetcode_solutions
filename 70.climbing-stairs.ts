@@ -14,6 +14,7 @@ function climbStairs(n: number): number {
         if (memo[n]) return memo[n];
      
         memo[n] = waysToClimb(n-1, memo) + waysToClimb(n-2, memo)
+        
         return memo[n];
     }
     if (n<=BASE_VALUE_OF_STAIR) return BASE_VALUE_OF_STAIR;
