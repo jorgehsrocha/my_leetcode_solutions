@@ -31,10 +31,14 @@ function reorderList(head: ListNode | null): void {
     
     let i = 0;
     for(let i = 0; i<Math.floor(list.length/2); i++) {
-        if (curr) curr.next = list[i];
+        if (curr) curr.next = list[i+1];
         curr = list[i]
         curr.next = list[list.length-i-1];
         curr = curr.next;
+        if (i+1 < Math.floor(list.length/2)) {  // Verifica se há próximo elemento
+            curr.next = list[i+1];
+            curr = curr.next;
+        }
     }
 
     if (list.length%2 === 0) {

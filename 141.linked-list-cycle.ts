@@ -18,19 +18,18 @@
  */
 
 function hasCycle(head: ListNode | null): boolean {
-    if (!head?.next || head === null) return false;
+    let fast = head;
+    let slow = head;
 
-    let cur = head.next;
-    let prev = head;
-    let next: ListNode | null;
+    while (fast && fast.next) {
+        fast = fast.next.next;
+        slow = slow.next;
 
-    while (cur.next) {
-        if (cur.next == head) return true;
-        next = cur.next;
-        cur.next = prev; 
-        prev = cur; 
-        cur = next;
+        if (fast === slow) {
+            return true;
+        }
     }
+
     return false;
 };
 // @lc code=end
